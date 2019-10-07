@@ -1,6 +1,36 @@
 $vue-blue: #32485F;
 $vue-green: #00C185;
+body {
+    background: $vue-green;
+}
+
 ul {
     list-style: none;
     text-align: left;
+    padding-left: 0;
+}
+
+ul ul {
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+ul ul li {
+    display: inline-block;
+    border-radius: 100%;
+    border: 1px solid #ebebeb;
+    width: 30px;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    color: black;
+    margin-right: 15px;
+}
+
+.item-header {
+    display: flex;
+    justify-content: space-between;
 }

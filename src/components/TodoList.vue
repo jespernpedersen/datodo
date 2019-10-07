@@ -11,7 +11,8 @@
 				:key="todo.id"
 				:todo="todo"
 				@remove="removeTodo"
-			/>
+			>
+			</TodoListItem>
 		</ul>
 		<p v-else>
 			Nothing left in the list. Add a new todo in the input above.
