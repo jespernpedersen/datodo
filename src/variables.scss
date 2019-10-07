@@ -4,3 +4,37 @@ ul {
     list-style: none;
     text-align: left;
 }
+
+ul li ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 5px;
+}
+
+ul li ul li {
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    border: 1px solid #CCC;
+    border-radius: 100%;
+}
+
+ul li ul li:not(:last-of-type) {
+    margin-right: 5px;
+}
+
+ul li ul li.incomplete {
+    background-color: white;
+}
+
+ul li ul li.unachieved {
+    background-color: red;
+}
+
+ul li ul li.achieved {
+    background-color: green;
+}
+
+ul li ul li.overachieved {
+    background-color: lightblue;
+}

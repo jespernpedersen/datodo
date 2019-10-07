@@ -18,17 +18,30 @@
     <button v-on:click="hideForm" v-show="isEditing">
       Complete
     </button>
+    <ul>
+      <SubtaskItem
+				v-for="subtask in todo.tasks"
+				:key="subtask.id"
+				:subtask="subtask"
+      >
+      </SubtaskItem>
+    </ul>
   </li>
 </template>
 
 <script>
+import SubtaskItem from './SubtaskItem.vue'
+
 
 export default {
+  components: {
+		SubtaskItem
+	},
   props: ['todo'],
   data() {
     return {
       isEditing: false,
-    };
+    }
   },
   methods: {
     showForm() {
@@ -36,7 +49,7 @@ export default {
     },
     hideForm() {
       this.isEditing = false;
-    }
+    },
   },
 };
 </script>
