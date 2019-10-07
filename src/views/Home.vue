@@ -16,7 +16,7 @@ export default {
 </script>
 
 <style lang="scss">
-// @import './variables.scss';
+@import '../variables.scss';
 
 *, *::before, *::after {
 	box-sizing: border-box;
