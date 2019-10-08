@@ -6,7 +6,8 @@
     </div>
     <!-- View in editing -->
     <div v-show="isEditing">
-      <input v-show="isEditing" v-model="todo.text">
+      <input v-show="isEditing" v-model="todo.text" 
+			@keydown.enter="hideForm">
     </div>
     <!-- Action buttons -->
     <button @click="$emit('remove', todo.id)">
@@ -23,6 +24,7 @@
 				v-for="subtask in todo.tasks"
 				:key="subtask.id"
 				:subtask="subtask"
+        @complete="completeToDo"
       >
       </SubtaskItem>
     </ul>
@@ -50,6 +52,20 @@ export default {
     hideForm() {
       this.isEditing = false;
     },
+    completeToDo(subtaskitem) {
+        if(subtaskitem.status === "incomplete") {
+          let new_status = subtaskitem.status = "overachieved";
+        }
+        else if(subtaskitem.status === "unachieved") {
+          let new_status = subtaskitem.status = "achieved";
+        }
+        else if(subtaskitem.status === "achieved") {
+          let new_status = subtaskitem.status = "unachieved";
+        }
+        else {
+          let new_status = subtaskitem.status = "incomplete";
+        }
+    }
   },
 };
 </script>

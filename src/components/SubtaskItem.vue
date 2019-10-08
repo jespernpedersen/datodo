@@ -1,5 +1,5 @@
 <template>
-    <li v-bind:class="subtaskitem.status">
+    <li v-bind:class="subtaskitem.status" @click="$emit('complete', subtaskitem)">
     </li>
 </template>
 
