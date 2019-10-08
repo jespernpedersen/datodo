@@ -1,5 +1,9 @@
 $vue-blue: #32485F;
 $vue-green: #00C185;
+body {
+    background: $vue-green;
+}
+
 ul {
     list-style: none;
     text-align: left;

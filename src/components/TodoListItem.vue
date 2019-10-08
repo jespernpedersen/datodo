@@ -1,9 +1,4 @@
-<template>
-  <li>
-    <!-- View before editing -->
-    <div v-show="!isEditing">
-      <span>{{ todo.text }}</span>
-    </div>
+
     <!-- View in editing -->
     <div v-show="isEditing">
       <input v-show="isEditing" v-model="todo.text" 
