@@ -1,8 +1,12 @@
-
+<template>
+  <li>
+    <!-- View before editing -->
+    <div v-show="!isEditing">
+      <span>{{ todo.text }}</span>
+    </div>
     <!-- View in editing -->
     <div v-show="isEditing">
-      <input v-show="isEditing" v-model="todo.text" 
-			@keydown.enter="hideForm">
+      <input v-model="todo.text">
     </div>
     <!-- Action buttons -->
     <button @click="$emit('remove', todo.id)">
@@ -50,15 +54,19 @@ export default {
     completeToDo(subtaskitem) {
         if(subtaskitem.status === "incomplete") {
           let new_status = subtaskitem.status = "overachieved";
+          return new_status;
         }
         else if(subtaskitem.status === "unachieved") {
           let new_status = subtaskitem.status = "achieved";
+          return new_status;
         }
         else if(subtaskitem.status === "achieved") {
           let new_status = subtaskitem.status = "unachieved";
+          return new_status;
         }
         else {
           let new_status = subtaskitem.status = "incomplete";
+          return new_status;
         }
     }
   },
