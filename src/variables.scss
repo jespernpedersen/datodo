@@ -7,30 +7,38 @@ body {
 ul {
     list-style: none;
     text-align: left;
+}
+
+ul li ul {
+    list-style: none;
     padding-left: 0;
+    margin-top: 5px;
 }
 
-ul ul {
-    display: flex;
-    margin-top: 10px;
-    margin-bottom: 20px;
-}
-
-ul ul li {
+ul li ul li {
+    width: 15px;
+    height: 15px;
     display: inline-block;
+    border: 1px solid #CCC;
     border-radius: 100%;
-    border: 1px solid #ebebeb;
-    width: 30px;
-    height: 30px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
-    color: black;
-    margin-right: 15px;
 }
 
-.item-header {
-    display: flex;
-    justify-content: space-between;
+ul li ul li:not(:last-of-type) {
+    margin-right: 5px;
+}
+
+ul li ul li.incomplete {
+    background-color: white;
+}
+
+ul li ul li.unachieved {
+    background-color: red;
+}
+
+ul li ul li.achieved {
+    background-color: green;
+}
+
+ul li ul li.overachieved {
+    background-color: lightblue;
 }

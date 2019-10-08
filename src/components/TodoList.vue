@@ -32,11 +32,34 @@ export default {
 	},
   data () {
     return {
-			newTodoText: '',
-      todos: [
-				{
-					id: nextTodoId++,
-					text: 'Learn Vue'
+		newTodoText: '',
+		todos: [
+			{
+				id: nextTodoId++,
+				text: 'Learn Vue',
+				tasks: 
+					[ 
+						{
+							id: 1,
+							status: 'incomplete'
+						},
+						{
+							id: 2,
+							status: 'incomplete'
+						},
+						{
+							id: 3,
+							status: 'achieved'
+						},
+						{
+							id: 4,
+							status: 'overachieved'
+						},
+						{
+							id: 5,
+							status: 'unachieved'
+						}
+					]
 				},
 				{
 					id: nextTodoId++,
@@ -50,21 +73,21 @@ export default {
     }
   },
 	methods: {
-		addTodo () {
-			const trimmedText = this.newTodoText.trim()
-			if (trimmedText) {
-				this.todos.push({
-					id: nextTodoId++,
-					text: trimmedText
+			addTodo () {
+				const trimmedText = this.newTodoText.trim()
+				if (trimmedText) {
+					this.todos.push({
+						id: nextTodoId++,
+						text: trimmedText
+					})
+					this.newTodoText = ''
+				}
+			},
+			removeTodo (idToRemove) {
+				this.todos = this.todos.filter(todo => {
+					return todo.id !== idToRemove
 				})
-				this.newTodoText = ''
 			}
-		},
-		removeTodo (idToRemove) {
-			this.todos = this.todos.filter(todo => {
-				return todo.id !== idToRemove
-			})
 		}
-	}
 }
 </script>
