@@ -75,9 +75,13 @@ export default {
 					})
 					this.newTodoText = ''
 
-					await db.collection('todo').add({
-						task
-					})
+					let task_pre = "Task_" + task_id
+
+					let task_name = task_pre.toString()
+
+
+					// Add a new document in collection "cities" with ID 'LA'
+					let taskDoc = await db.collection('todo').doc(task_name).set(task);
 
 
 					this.todos.push({
@@ -115,7 +119,11 @@ export default {
 					return todo.id !== idToRemove
 				})
 
-				await db.collection('todo').doc(idToRemove).delete()
+				let task_to_remove_pre = "Task_" + idToRemove
+
+				let task_to_remove = task_to_remove_pre.toString()
+
+				await db.collection('todo').doc(task_to_remove).delete()
 			}
 		}
 }
