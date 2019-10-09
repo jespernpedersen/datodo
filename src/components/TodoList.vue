@@ -23,6 +23,7 @@
 <script>
 import BaseInputText from './BaseInputText.vue'
 import TodoListItem from './TodoListItem.vue'
+import { db } from '../firebase/db.js'
 
 let nextTodoId = 1
 
@@ -32,84 +33,89 @@ export default {
 	},
   data () {
     return {
+		user_id: '1',
 		newTodoText: '',
-		todos: [
-			{
-				id: nextTodoId++,
-				text: 'Learn Vue',
-				tasks: 
-					[ 
-						{
-							id: 1,
-							status: 'incomplete'
-						},
-						{
-							id: 2,
-							status: 'incomplete'
-						},
-						{
-							id: 3,
-							status: 'achieved'
-						},
-						{
-							id: 4,
-							status: 'overachieved'
-						},
-						{
-							id: 5,
-							status: 'unachieved'
-						}
-					]
-				},
-				{
-					id: nextTodoId++,
-					text: 'Learn about single-file components'
-				},
-				{
-					id: nextTodoId++,
-					text: 'Fall in love'
-				}
-			]
+		todos: []
     }
   },
 	methods: {
-			addTodo () {
+			async addTodo () {
 				const trimmedText = this.newTodoText.trim()
 				if (trimmedText) {
-					this.todos.push({
-						id: nextTodoId++,
+					let task_id = nextTodoId++;
+					let task = {
+						id: task_id,
 						text: trimmedText,
 						tasks: 
 							[ 
 								{
 									id: 1,
-									status: 'incomplete'
+									status: 'unachieved'
 								},
 								{
 									id: 2,
-									status: 'incomplete'
+									status: 'unachieved'
 								},
 								{
 									id: 3,
-									status: 'achieved'
+									status: 'unachieved'
 								},
 								{
 									id: 4,
-									status: 'overachieved'
+									status: 'incomplete'
 								},
 								{
 									id: 5,
+									status: 'incomplete'
+								}
+							]
+					}
+					this.todos.push({
+						task
+					})
+					this.newTodoText = ''
+
+					await db.collection('todo').add({
+						task
+					})
+
+
+					this.todos.push({
+						id: task_id,
+						text: trimmedText,
+						tasks: 
+							[ 
+								{
+									id: 1,
 									status: 'unachieved'
+								},
+								{
+									id: 2,
+									status: 'unachieved'
+								},
+								{
+									id: 3,
+									status: 'unachieved'
+								},
+								{
+									id: 4,
+									status: 'incomplete'
+								},
+								{
+									id: 5,
+									status: 'incomplete'
 								}
 							]						
 					})
 					this.newTodoText = ''
 				}
 			},
-			removeTodo (idToRemove) {
+			async removeTodo (idToRemove) {
 				this.todos = this.todos.filter(todo => {
 					return todo.id !== idToRemove
 				})
+
+				await db.collection('todo').doc(idToRemove).delete()
 			}
 		}
 }
