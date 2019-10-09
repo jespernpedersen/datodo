@@ -78,7 +78,30 @@ export default {
 				if (trimmedText) {
 					this.todos.push({
 						id: nextTodoId++,
-						text: trimmedText
+						text: trimmedText,
+						tasks: 
+							[ 
+								{
+									id: 1,
+									status: 'incomplete'
+								},
+								{
+									id: 2,
+									status: 'incomplete'
+								},
+								{
+									id: 3,
+									status: 'achieved'
+								},
+								{
+									id: 4,
+									status: 'overachieved'
+								},
+								{
+									id: 5,
+									status: 'unachieved'
+								}
+							]						
 					})
 					this.newTodoText = ''
 				}
