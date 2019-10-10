@@ -97,8 +97,35 @@ export default {
 					})
 
 					// Database
-
 					await db.collection('todo').add(task)
+
+					// localStorage
+					localStorage.push({
+						text: trimmedText,
+						tasks: 
+							[ 
+								{
+									id: 1,
+									status: 'unachieved'
+								},
+								{
+									id: 2,
+									status: 'unachieved'
+								},
+								{
+									id: 3,
+									status: 'unachieved'
+								},
+								{
+									id: 4,
+									status: 'incomplete'
+								},
+								{
+									id: 5,
+									status: 'incomplete'
+								}
+							]					
+					})
 
 					// Reset
 					this.newTodoText = ''
@@ -114,9 +141,9 @@ export default {
 			},
 			async editTodo (todo) {
 				// Database Edit
-				/*await db.collection('todo').doc(todo.id).ref.set({
-					text: 
-				})*/
+				await db.collection('todo').doc(todo.id).set({
+					text: todo.text
+				})
 			}
 		},
 		created() {	
