@@ -10,13 +10,13 @@
       <input class="inputfield" v-model="todo.text">
     </div>
     <!-- Action buttons -->
-    <button class="button remove" @click="$emit('remove', todo.id)">
+    <button class="button remove" @click="$emit('remove', todo)">
       X
     </button>
     <button class="button edit" v-on:click="showForm" v-show="!isEditing">
       Edit
     </button>
-    <button class="button complete" v-on:click="hideForm" v-show="isEditing">
+    <button class="button complete" @click="$emit('editcomplete', todo)" v-on:click="hideForm" v-show="isEditing">
       Complete
     </button>
     <ul>
@@ -34,7 +34,7 @@
 
 <script>
 import SubtaskItem from './SubtaskItem.vue'
-
+// import { db } from './firebase/db.js'
 
 export default {
   components: {

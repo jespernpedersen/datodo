@@ -7,6 +7,7 @@
 				:key="todo.id"
 				:todo="todo"
 				@remove="removeTodo"
+				@editcomplete="editTodo"
 			>
 			</TodoListItem>
 		</ul>
@@ -26,8 +27,8 @@
 <script>
 import BaseInputText from './BaseInputText.vue'
 import TodoListItem from './TodoListItem.vue'
+import { db } from '../firebase/db.js'
 
-let nextTodoId = 1
 
 export default {
 	components: {
@@ -35,62 +36,126 @@ export default {
 	},
   data () {
     return {
+		user_id: '1',
 		newTodoText: '',
-		todos: [
-			{
-				id: nextTodoId++,
-				text: 'Learn Vue',
-				tasks: 
-					[ 
-						{
-							id: 1,
-							status: 'incomplete'
-						},
-						{
-							id: 2,
-							status: 'incomplete'
-						},
-						{
-							id: 3,
-							status: 'achieved'
-						},
-						{
-							id: 4,
-							status: 'overachieved'
-						},
-						{
-							id: 5,
-							status: 'unachieved'
-						}
-					]
-				},
-				{
-					id: nextTodoId++,
-					text: 'Learn about single-file components'
-				},
-				{
-					id: nextTodoId++,
-					text: 'Fall in love'
-				}
-			]
+		todos: []
     }
   },
 	methods: {
-			addTodo () {
+			async addTodo () {
+				// Clientside
 				const trimmedText = this.newTodoText.trim()
 				if (trimmedText) {
+					let task = {
+						text: trimmedText,
+						tasks: 
+							[ 
+								{
+									id: 1,
+									status: 'unachieved'
+								},
+								{
+									id: 2,
+									status: 'unachieved'
+								},
+								{
+									id: 3,
+									status: 'unachieved'
+								},
+								{
+									id: 4,
+									status: 'incomplete'
+								},
+								{
+									id: 5,
+									status: 'incomplete'
+								}
+							]
+					}
 					this.todos.push({
-						id: nextTodoId++,
-						text: trimmedText
+						text: trimmedText,
+						tasks: 
+							[ 
+								{
+									id: 1,
+									status: 'unachieved'
+								},
+								{
+									id: 2,
+									status: 'unachieved'
+								},
+								{
+									id: 3,
+									status: 'unachieved'
+								},
+								{
+									id: 4,
+									status: 'incomplete'
+								},
+								{
+									id: 5,
+									status: 'incomplete'
+								}
+							]
 					})
+
+					// Database
+					await db.collection('todo').add(task)
+
+					// localStorage
+					localStorage.push({
+						text: trimmedText,
+						tasks: 
+							[ 
+								{
+									id: 1,
+									status: 'unachieved'
+								},
+								{
+									id: 2,
+									status: 'unachieved'
+								},
+								{
+									id: 3,
+									status: 'unachieved'
+								},
+								{
+									id: 4,
+									status: 'incomplete'
+								},
+								{
+									id: 5,
+									status: 'incomplete'
+								}
+							]					
+					})
+
+					// Reset
 					this.newTodoText = ''
 				}
 			},
-			removeTodo (idToRemove) {
-				this.todos = this.todos.filter(todo => {
-					return todo.id !== idToRemove
+			async removeTodo (todo) {
+				// Clientside Edit
+				let removeable = this.todos.indexOf(todo)
+				this.todos.splice(removeable, 1)
+
+				// Databse Remove
+				await db.collection('todo').doc(todo.id).delete()
+			},
+			async editTodo (todo) {
+				// Database Edit
+				await db.collection('todo').doc(todo.id).set({
+					text: todo.text
 				})
 			}
-		}
+		},
+		created() {	
+				db.collection("todo").get().then((querySnapshot) => {
+					querySnapshot.forEach(doc => this.todos.push({
+						id:doc.id,
+						...doc.data()
+					}))
+				})
+			}
 }
 </script>
