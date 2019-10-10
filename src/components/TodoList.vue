@@ -68,22 +68,46 @@ export default {
 							]
 					}
 					this.todos.push({
-						task
+						text: trimmedText,
+						tasks: 
+							[ 
+								{
+									id: 1,
+									status: 'unachieved'
+								},
+								{
+									id: 2,
+									status: 'unachieved'
+								},
+								{
+									id: 3,
+									status: 'unachieved'
+								},
+								{
+									id: 4,
+									status: 'incomplete'
+								},
+								{
+									id: 5,
+									status: 'incomplete'
+								}
+							]
 					})
 
+					console.log(this.todos)
+
 					await db.collection('todo').add(task)
+
+					this.newTodoText = ''
 				}
 			},
 			async removeTodo (todo) {
-				/*this.todos = this.todos.filter(todo => {
-					return todo.id !== idToRemove
-				})
-				*/
-				// let removeable = this.todos.indexOf(todo)
 
-				// this.todos.splice(removeable, 1)
+				let removeable = this.todos.indexOf(todo)
 
-				// await db.collection('todos').doc(todo.id).delete()
+				this.todos.splice(removeable, 1)
+
+				await db.collection('todo').doc(todo.id).delete()
 			},
 		},
 		created() {	

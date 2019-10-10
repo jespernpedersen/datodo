@@ -32,6 +32,7 @@
 
 <script>
 import SubtaskItem from './SubtaskItem.vue'
+// import { db } from './firebase/db.js'
 
 export default {
   components: {
@@ -48,7 +49,6 @@ export default {
       this.isEditing = true;
     },
     hideForm() {
-
       this.isEditing = false;
     },
     completeToDo(subtaskitem) {
