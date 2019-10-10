@@ -1,21 +1,22 @@
 <template>
+<div class="section">
   <li>
     <!-- View before editing -->
     <div v-show="!isEditing">
-      <span>{{ todo.text }}</span>
+      <span ><h3>{{ todo.text }}</h3></span>
     </div>
     <!-- View in editing -->
-    <div v-show="isEditing">
-      <input v-model="todo.text">
+    <div class="button newTask" v-show="isEditing">
+      <input class="inputfield" v-model="todo.text">
     </div>
     <!-- Action buttons -->
-    <button @click="$emit('remove', todo.id)">
+    <button class="button remove" @click="$emit('remove', todo.id)">
       X
     </button>
-    <button v-on:click="showForm" v-show="!isEditing">
+    <button class="button edit" v-on:click="showForm" v-show="!isEditing">
       Edit
     </button>
-    <button v-on:click="hideForm" v-show="isEditing">
+    <button class="button complete" v-on:click="hideForm" v-show="isEditing">
       Complete
     </button>
     <ul>
@@ -28,6 +29,7 @@
       </SubtaskItem>
     </ul>
   </li>
+  </div>
 </template>
 
 <script>

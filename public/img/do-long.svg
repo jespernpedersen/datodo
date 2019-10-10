@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.0.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 244 88" style="enable-background:new 0 0 244 88;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#F2F2F2;}
+	.st1{fill:none;stroke:#272727;stroke-width:4;stroke-miterlimit:10;}
+	.st2{fill:#BFAE5A;}
+	.st3{fill:#272727;}
+	.st4{fill:none;stroke:#000000;stroke-width:4;stroke-miterlimit:10;}
+	.st5{display:none;}
+	.st6{display:inline;fill:#FFFFFF;}
+</style>
+<g>
+	<g>
+		<g>
+			<rect x="4" y="8" class="st0" width="236" height="76"/>
+		</g>
+		<line class="st1" x1="4" y1="6" x2="240" y2="6"/>
+		<line class="st1" x1="4" y1="86" x2="240" y2="86"/>
+		<line class="st1" x1="2" y1="84" x2="2" y2="8"/>
+		<line class="st1" x1="242" y1="84" x2="242" y2="8"/>
+	</g>
+	<g>
+		<g>
+			<rect x="104" y="2.2" class="st2" width="36" height="8"/>
+			<path class="st3" d="M138,4.2v4h-32v-4H138 M142,0.2h-40v12h40V0.2L142,0.2z"/>
+		</g>
+		<g>
+			<rect x="108" y="10" class="st0" width="28" height="8"/>
+			<path class="st3" d="M134,12v4h-24v-4H134 M138,8h-32v12h32V8L138,8z"/>
+		</g>
+		<path class="st4" d="M139.1,0"/>
+		<path class="st4" d="M104.9,0"/>
+		<path class="st4" d="M139.1,8"/>
+		<path class="st4" d="M104.9,8"/>
+		<path class="st4" d="M104,0.2"/>
+		<path class="st4" d="M104,7.8"/>
+		<path class="st4" d="M140,0.2"/>
+		<path class="st4" d="M140,7.8"/>
+	</g>
+	<g class="st5">
+		<path class="st6" d="M95,60V32h20v4h4v4h4v12h-4v4h-4v4H95z M103,56h8v-4h4V40h-4v-4h-8V56z"/>
+		<path class="st6" d="M131,60v-4h-4V36h4v-4h20v4h4v20h-4v4H131z M135,56h12V36h-12V56z"/>
+	</g>
+</g>
+<g>
+	<path class="st3" d="M16.2,66V34.4h22.5v4.5h4.5v4.5h4.5V57h-4.5v4.5h-4.5V66H16.2z M25.2,61.5h9V57h4.5V43.5h-4.5v-4.5h-9V61.5z"
+		/>
+	<path class="st3" d="M56.7,66v-4.5h-4.5V57h4.5v-4.5h18V48h-18v-4.5h22.5V48h4.5v18H56.7z M61.2,61.5h13.5V57H61.2V61.5z"/>
+	<path class="st3" d="M101.7,66V48h-9v-4.5h9v-9h9v9h9V48h-9v18H101.7z"/>
+	<path class="st3" d="M128.8,66v-4.5h-4.5V48h4.5v-4.5h22.5V48h4.5v13.5h-4.5V66H128.8z M133.3,61.5h13.5V48h-13.5V61.5z"/>
+	<path class="st3" d="M164.8,66v-4.5h-4.5V48h4.5v-4.5h18v-9h9V66H164.8z M169.3,61.5h13.5V48h-13.5V61.5z"/>
+	<path class="st3" d="M200.8,66v-4.5h-4.5V48h4.5v-4.5h22.5V48h4.5v13.5h-4.5V66H200.8z M205.3,61.5h13.5V48h-13.5V61.5z"/>
+</g>
+</svg>

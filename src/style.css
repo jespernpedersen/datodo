@@ -1,0 +1,242 @@
+body {
+  background: #FFF;
+}
+
+.inputfield {
+  margin: 0;
+  padding: 10px;
+  border: 0;
+}
+
+ul {
+  list-style: none;
+  text-align: left;
+  -webkit-padding-start: 0px;
+          padding-inline-start: 0px;
+}
+
+ul li ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 5px;
+}
+
+ul li ul li {
+  display: inline-block;
+  border: 1px solid #CCC;
+  border-radius: 0%;
+  z-index: 2;
+}
+
+ul li ul li:not(:last-of-type) {
+  margin-right: 10px;
+}
+
+ul li ul li.incomplete {
+  background-color: #F2F2F2;
+  -webkit-box-shadow: inset -4px -4px 0px 0px #B5AFAF;
+          box-shadow: inset -4px -4px 0px 0px #B5AFAF;
+}
+
+ul li ul li.incomplete:hover, ul li ul li.incomplete:focus {
+  background: #B5AFAF;
+  -webkit-box-shadow: inset -6px -6px 0px 0px #B5AFAF;
+          box-shadow: inset -6px -6px 0px 0px #B5AFAF;
+}
+
+ul li ul li.incomplete:active {
+  -webkit-box-shadow: inset 4px 4px 0px 0px #B5AFAF;
+          box-shadow: inset 4px 4px 0px 0px #B5AFAF;
+}
+
+ul li ul li.unachieved, .remove {
+  background-color: #D94854;
+  -webkit-box-shadow: inset -4px -4px 0px 0px #A3363F;
+          box-shadow: inset -4px -4px 0px 0px #A3363F;
+}
+
+ul li ul li.unachieved:hover, ul li ul li.unachieved:focus, .remove:hover, .remove:focus {
+  background: #A3363F;
+  -webkit-box-shadow: inset -6px -6px 0px 0px #A3363F;
+          box-shadow: inset -6px -6px 0px 0px #A3363F;
+}
+
+ul li ul li.unachieved:active, .remove:active {
+  -webkit-box-shadow: inset 4px 4px 0px 0px #4BA52E;
+          box-shadow: inset 4px 4px 0px 0px #4BA52E;
+}
+
+ul li ul li.achieved, .edit {
+  background-color: #92CD41;
+  -webkit-box-shadow: inset -4px -4px 0px 0px #4BA52E;
+          box-shadow: inset -4px -4px 0px 0px #4BA52E;
+}
+
+ul li ul li.achieved:hover, ul li ul li.achieved:focus, .edit:hover, .edit:focus {
+  background: #4BA52E;
+  -webkit-box-shadow: inset -6px -6px 0px 0px #4BA52E;
+          box-shadow: inset -6px -6px 0px 0px #4BA52E;
+}
+
+ul li ul li.achieved:active, .edit:active {
+  -webkit-box-shadow: inset 4px 4px 0px 0px #4BA52E;
+          box-shadow: inset 4px 4px 0px 0px #4BA52E;
+}
+
+ul li ul li.overachieved, .complete {
+  background-color: #5ED4D5;
+  -webkit-box-shadow: inset -4px -4px 0px 0px #479FA0;
+          box-shadow: inset -4px -4px 0px 0px #479FA0;
+}
+
+ul li ul li.overachieved:hover, ul li ul li.overachieved:focus, .complete:hover, .complete:focus {
+  background: #479FA0;
+  -webkit-box-shadow: inset -6px -6px 0px 0px #479FA0;
+          box-shadow: inset -6px -6px 0px 0px #479FA0;
+}
+
+ul li ul li.overachieved:active, .complete:active {
+  -webkit-box-shadow: inset 4px 4px 0px 0px #479FA0;
+          box-shadow: inset 4px 4px 0px 0px #479FA0;
+}
+
+.remove, .complete, .edit {
+  padding: 10px;
+}
+
+.remove {
+  background: #D94854;
+}
+
+.input {
+  border: 0;
+}
+
+.newTask {
+  background-color: #FFF;
+  width: 92%;
+}
+
+.section {
+  background: #F2F2F2;
+}
+
+.section:before, .section:after {
+  content: '';
+}
+
+ul li ul li {
+  padding: 15px;
+}
+
+.field {
+  background: #FFF;
+  padding: 0;
+  margin: auto 5%;
+}
+
+.section, .eightbit-btn {
+  padding: 10px;
+  margin: 4px;
+}
+
+ul li ul li, .button {
+  margin: 12px;
+}
+
+.section, .eightbit-btn, ul li ul li, .button, .field {
+  position: relative;
+}
+
+.section:before, .section:after, .eightbit-btn:before, .eightbit-btn:after, ul li ul li:before, ul li ul li:after, .button:before, .button:after, .field:before, .field:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  z-index: -1;
+}
+
+.section:before, .eightbit-btn:before, ul li ul li:before, .button:before, .field:before {
+  top: -4px;
+  left: 0;
+  border-top: 4px #272727 solid;
+  border-bottom: 4px #272727 solid;
+}
+
+.section:after, .eightbit-btn:after, ul li ul li:after, .button:after, .field:after {
+  left: -4px;
+  top: 0;
+  border-left: 4px #272727 solid;
+  border-right: 4px #272727 solid;
+}
+
+h1, h2, h3, p {
+  font-family: 'Press Start 2P', cursive;
+  text-align: center;
+  color: #272727;
+}
+
+h1 {
+  font-size: 2rem;
+  padding: 0;
+  margin: 1rem;
+}
+
+h2 {
+  font-size: 1.4rem;
+  line-height: 2rem;
+}
+
+h3 {
+  text-align: left;
+  padding-left: 1%;
+  -webkit-margin-before: 13px;
+          margin-block-start: 13px;
+  -webkit-margin-after: 23px;
+          margin-block-end: 23px;
+}
+
+p {
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+}
+
+input, button, .button {
+  font-family: 'Press Start 2P', cursive;
+  z-index: 2;
+}
+
+input {
+  padding: 10px;
+  width: 91%;
+}
+
+.inputfield {
+  width: 91%;
+}
+
+.logo {
+  width: 72vw;
+  text-align: center;
+  display: block;
+  margin: 2vh auto;
+}
+
+@media only screen and (min-width: 875px) {
+  .logo {
+    width: 19.5vw;
+  }
+  .newTask {
+    width: 30%;
+  }
+  input {
+    padding: 10px;
+    width: 30%;
+  }
+  ul li ul li:not(:last-of-type) {
+    margin-right: 22px;
+  }
+}
+/*# sourceMappingURL=style.css.map */
