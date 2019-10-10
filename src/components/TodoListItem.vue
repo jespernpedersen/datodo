@@ -9,7 +9,7 @@
       <input v-model="todo.text">
     </div>
     <!-- Action buttons -->
-    <button @click="$emit('remove', todo.id)">
+    <button @click="$emit('remove', todo)">
       X
     </button>
     <button v-on:click="showForm" v-show="!isEditing">
@@ -33,7 +33,6 @@
 <script>
 import SubtaskItem from './SubtaskItem.vue'
 
-
 export default {
   components: {
 		SubtaskItem
@@ -49,6 +48,7 @@ export default {
       this.isEditing = true;
     },
     hideForm() {
+
       this.isEditing = false;
     },
     completeToDo(subtaskitem) {

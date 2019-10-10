@@ -25,7 +25,6 @@ import BaseInputText from './BaseInputText.vue'
 import TodoListItem from './TodoListItem.vue'
 import { db } from '../firebase/db.js'
 
-let nextTodoId = 1
 
 export default {
 	components: {
@@ -42,9 +41,7 @@ export default {
 			async addTodo () {
 				const trimmedText = this.newTodoText.trim()
 				if (trimmedText) {
-					let task_id = nextTodoId++;
 					let task = {
-						id: task_id,
 						text: trimmedText,
 						tasks: 
 							[ 
@@ -73,58 +70,29 @@ export default {
 					this.todos.push({
 						task
 					})
-					this.newTodoText = ''
 
-					let task_pre = "Task_" + task_id
-
-					let task_name = task_pre.toString()
-
-
-					// Add a new document in collection "cities" with ID 'LA'
-					let taskDoc = await db.collection('todo').doc(task_name).set(task);
-
-
-					this.todos.push({
-						id: task_id,
-						text: trimmedText,
-						tasks: 
-							[ 
-								{
-									id: 1,
-									status: 'unachieved'
-								},
-								{
-									id: 2,
-									status: 'unachieved'
-								},
-								{
-									id: 3,
-									status: 'unachieved'
-								},
-								{
-									id: 4,
-									status: 'incomplete'
-								},
-								{
-									id: 5,
-									status: 'incomplete'
-								}
-							]						
-					})
-					this.newTodoText = ''
+					await db.collection('todo').add(task)
 				}
 			},
-			async removeTodo (idToRemove) {
-				this.todos = this.todos.filter(todo => {
+			async removeTodo (todo) {
+				/*this.todos = this.todos.filter(todo => {
 					return todo.id !== idToRemove
 				})
+				*/
+				// let removeable = this.todos.indexOf(todo)
 
-				let task_to_remove_pre = "Task_" + idToRemove
+				// this.todos.splice(removeable, 1)
 
-				let task_to_remove = task_to_remove_pre.toString()
-
-				await db.collection('todo').doc(task_to_remove).delete()
+				// await db.collection('todos').doc(todo.id).delete()
+			},
+		},
+		created() {	
+				db.collection("todo").get().then((querySnapshot) => {
+					querySnapshot.forEach(doc => this.todos.push({
+						id:doc.id,
+						...doc.data()
+					}))
+				})
 			}
-		}
 }
 </script>
