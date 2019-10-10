@@ -15,7 +15,7 @@
     <button v-on:click="showForm" v-show="!isEditing">
       Edit
     </button>
-    <button v-on:click="hideForm" v-show="isEditing">
+    <button @click="$emit('editcomplete', todo)" v-on:click="hideForm" v-show="isEditing">
       Complete
     </button>
     <ul>

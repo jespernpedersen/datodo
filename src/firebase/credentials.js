@@ -1,10 +1,10 @@
 export default {
     config: {
-        apiKey: process.env.VUE_APP_FIREBASE_API_KEY,
-        authDomain: process.env.VUE_APP_FIREBASE_AUTH_DOMAIN,
-        storageBucket: process.env.VUE_APP_FIREBASE_STORAGE_BUCKET,
-        databaseURL: process.env.VUE_APP_FIREBASE_DB_URL,
-        projectId: process.env.VUE_APP_FIREBASE_PROJECT_ID,
-        messagingSenderId: process.env.VUE_APP_FIREBASE_MESSAGING_SENDER_ID
+        apiKey: "AIzaSyDElhVWWnUY8xSR2Dn28d5EW7Ue49RJMOA",
+        authDomain: "datodo.firebaseapp.com",
+        storageBucket: "https://datodo.firebaseio.com",
+        databaseURL: "datodo",
+        projectId: "datodo.appspot.com",
+        messagingSenderId: "999593247776"
     }
 }

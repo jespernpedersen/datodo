@@ -11,6 +11,7 @@
 				:key="todo.id"
 				:todo="todo"
 				@remove="removeTodo"
+				@editcomplete="editTodo"
 			>
 			</TodoListItem>
 		</ul>
@@ -39,6 +40,7 @@ export default {
   },
 	methods: {
 			async addTodo () {
+				// Clientside
 				const trimmedText = this.newTodoText.trim()
 				if (trimmedText) {
 					let task = {
@@ -94,21 +96,28 @@ export default {
 							]
 					})
 
-					console.log(this.todos)
+					// Database
 
 					await db.collection('todo').add(task)
 
+					// Reset
 					this.newTodoText = ''
 				}
 			},
 			async removeTodo (todo) {
-
+				// Clientside Edit
 				let removeable = this.todos.indexOf(todo)
-
 				this.todos.splice(removeable, 1)
 
+				// Databse Remove
 				await db.collection('todo').doc(todo.id).delete()
 			},
+			async editTodo (todo) {
+				// Database Edit
+				/*await db.collection('todo').doc(todo.id).ref.set({
+					text: 
+				})*/
+			}
 		},
 		created() {	
 				db.collection("todo").get().then((querySnapshot) => {
