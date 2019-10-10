@@ -1,10 +1,6 @@
 <template>
 	<div>
-		<BaseInputText 
-			v-model="newTodoText"
-			placeholder="New todo"
-			@keydown.enter="addTodo"
-		/>
+		
 		<ul v-if="todos.length">
 			<TodoListItem
 				v-for="todo in todos"
@@ -18,6 +14,13 @@
 		<p v-else>
 			Nothing left in the list. Add a new todo in the input above.
 		</p>
+<div class="field">
+		<BaseInputText
+			v-model="newTodoText"
+			placeholder="New todo"
+			@keydown.enter="addTodo"
+		/>
+</div>
 	</div>
 </template>
 
