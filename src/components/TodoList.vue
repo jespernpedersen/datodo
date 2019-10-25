@@ -154,24 +154,31 @@ export default {
     			console.log(this.$route.params.category)
 			},
 			retrieveTasks() {
-				this.todos.splice(0, this.todos.length);
-				let route = this.$route.params.category 
+				if(this.$route.name == 'category') {
+					this.todos.splice(0, this.todos.length)
+					let route = this.$route.params.category 
 
-				db.collection("todo").where('category', '==', route).get().then((querySnapshot) => {
-					querySnapshot.forEach(doc => this.todos.push({
-						id:doc.id,
-						...doc.data()
-					}))
-				})
-			},
-			clearData() {
-				this.todos.empty()
+					db.collection("todo").where('category', '==', route).get().then((querySnapshot) => {
+						querySnapshot.forEach(doc => this.todos.push({
+							id:doc.id,
+							...doc.data()
+						}))
+					})
+				}
+				else {
+					db.collection("todo").get().then((querySnapshot) => {
+						querySnapshot.forEach(doc => this.todos.push({
+							id:doc.id,
+							...doc.data()
+						}))
+					})	
+				}
 			}
 		},
 		created() {	
 		},
   	mounted() {
-		this.retrieveTasks(this.$route.params.category)
+		this.retrieveTasks()
   	},
 	watch: {
 		// call again the method if the route changes
