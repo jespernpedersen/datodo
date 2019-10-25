@@ -153,13 +153,19 @@ export default {
 			getUrl() {
     			console.log(this.$route.params.category)
 			},
-			retrieveTasks(route) {
+			retrieveTasks() {
+				this.todos.splice(0, this.todos.length);
+				let route = this.$route.params.category 
+
 				db.collection("todo").where('category', '==', route).get().then((querySnapshot) => {
 					querySnapshot.forEach(doc => this.todos.push({
 						id:doc.id,
 						...doc.data()
 					}))
 				})
+			},
+			clearData() {
+				this.todos.empty()
 			}
 		},
 		created() {	
@@ -169,7 +175,7 @@ export default {
   	},
 	watch: {
 		// call again the method if the route changes
-		'$route': 'getUrl'
+		'$route': 'retrieveTasks'
 	}
 }
 </script>
