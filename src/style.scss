@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
-
 //Buttons
 $yellowish: #BFAE5A;
 $greenish: #92CD41;
@@ -7,45 +6,35 @@ $blueish: #5ED4D5;
 $redish: #D94854;
 $greyish: #F2F2F2;
 $blackish: #272727;
-
 //Container & Logo
 $grey-container: $greyish;
 $yellow-container: $yellowish;
-
-
 //8 bit outline
 $outline-width: 4px;
 $shadow-width: 4px;
-
-
 $vue-blue: #32485F;
 $vue-green: #FFF;
 $shadow-in: #B5AFAF;
 $shadow-un: #A3363F;
 $shadow-ac: #4BA52E;
 $shadow-ov: #479FA0;
-
-
 //8 bit outline
 $outline-width: 4px;
 $shadow-width: 4px;
-
 body {
     background: #FFF;
 }
 
-.inputfield{
+.inputfield {
     margin: 0;
     padding: 10px;
-    border:0;
-    
+    border: 0;
 }
 
 ul {
     list-style: none;
     text-align: left;
     padding-inline-start: 0px;
-
 }
 
 ul li ul {
@@ -68,74 +57,67 @@ ul li ul li:not(:last-of-type) {
 ul li ul li.incomplete {
     background-color: $greyish;
     box-shadow: inset (-$shadow-width) (-$shadow-width) 0px 0px $shadow-in;
-
     &:hover,
     &:focus {
         background: $shadow-in;
         box-shadow: inset (-$shadow-width*1.5) (-$shadow-width*1.5) 0px 0px $shadow-in;
     }
-
     &:active {
         box-shadow: inset $shadow-width $shadow-width 0px 0px $shadow-in;
     }
 }
 
-ul li ul li.unachieved, .remove {
+ul li ul li.unachieved,
+.remove {
     background-color: $redish;
     box-shadow: inset (-$shadow-width) (-$shadow-width) 0px 0px $shadow-un;
-
     &:hover,
     &:focus {
         background: $shadow-un;
         box-shadow: inset (-$shadow-width*1.5) (-$shadow-width*1.5) 0px 0px $shadow-un;
     }
-
     &:active {
         box-shadow: inset $shadow-width $shadow-width 0px 0px $shadow-ac;
     }
 }
 
-ul li ul li.achieved, .edit {
+ul li ul li.achieved,
+.edit {
     background-color: $greenish;
     box-shadow: inset (-$shadow-width) (-$shadow-width) 0px 0px $shadow-ac;
-
     &:hover,
     &:focus {
         background: $shadow-ac;
         box-shadow: inset (-$shadow-width*1.5) (-$shadow-width*1.5) 0px 0px $shadow-ac;
     }
-
     &:active {
         box-shadow: inset $shadow-width $shadow-width 0px 0px $shadow-ac;
     }
 }
 
-ul li ul li.overachieved, .complete {
+ul li ul li.overachieved,
+.complete {
     background-color: $blueish;
     box-shadow: inset (-$shadow-width) (-$shadow-width) 0px 0px $shadow-ov;
-
     &:hover,
     &:focus {
         background: $shadow-ov;
         box-shadow: inset (-$shadow-width*1.5) (-$shadow-width*1.5) 0px 0px $shadow-ov;
     }
-
     &:active {
         box-shadow: inset $shadow-width $shadow-width 0px 0px $shadow-ov;
     }
 }
 
-
-.remove, .complete, .edit {
+.remove,
+.complete,
+.edit {
     padding: 10px;
 }
 
 .remove {
     background: #D94854;
 }
-
-
-
 
 //Container & btn
 .input {
@@ -149,35 +131,40 @@ ul li ul li.overachieved, .complete {
 
 .section {
     background: $grey-container;
-    
     &:before,
     &:after {
-    content: '';
-        
+        content: '';
     }
 }
 
 ul li ul li {
     padding: 15px;
-    
+    margin-top: 0;
 }
+
 .field {
     background: #FFF;
     padding: 0;
     margin: auto 5%;
 }
-.section, .eightbit-btn {
+
+.section,
+.eightbit-btn {
     padding: 10px;
     margin: 4px;
 }
 
-ul li ul li, .button {
+ul li ul li,
+.button {
     margin: 12px;
 }
 
-.section, .eightbit-btn, ul li ul li, .button, .field {
+.section,
+.eightbit-btn,
+ul li ul li,
+.button,
+.field {
     position: relative;
-    
     &:before,
     &:after {
         content: '';
@@ -185,16 +172,14 @@ ul li ul li, .button {
         width: 100%;
         height: 100%;
         box-sizing: content-box;
-        z-index:-1
+        z-index: -1
     }
-
     &:before {
         top: -$outline-width;
         left: 0;
         border-top: $outline-width $blackish solid;
         border-bottom: $outline-width $blackish solid;
     }
-
     &:after {
         left: -$outline-width;
         top: 0;
@@ -204,8 +189,10 @@ ul li ul li, .button {
 }
 
 // Text
-
-h1,h2,h3,p {
+h1,
+h2,
+h3,
+p {
     font-family: 'Press Start 2P', cursive;
     text-align: center;
     color: $blackish;
@@ -234,7 +221,9 @@ p {
     line-height: 1.25rem;
 }
 
-input, button, .button{
+input,
+button,
+.button {
     font-family: 'Press Start 2P', cursive;
     z-index: 2;
 }
@@ -243,8 +232,6 @@ input {
     padding: 10px;
     width: 91%;
 }
-
-
 
 .inputfield {
     width: 91%;
@@ -258,28 +245,102 @@ input {
 }
 
 
-@media only screen and (min-width: 875px) { 
-.weirdMediaQueryProblem {}
+/* Layout */
 
+#panels {
+    display: flex;
+    flex: 1 1 0px;
+    will-change: width;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+}
+
+#category-panel {
+    width: 50px;
+    display: flex;
+    flex-direction: column;
+    background: #f4f4f4;
+    transition: width 180ms ease;
+}
+
+#category-panel.active {
+    width: 200px;
+}
+
+#task-panel {
+    flex: 1 1 0px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background-color: white;
+    transition: background-color 0.3s;
+    margin-top: -4px;
+}
+
+ul {
+    margin-top: 0;
+}
+
+
+/* Category List */
+
+#expand-list {
+    margin-bottom: 20px;
+}
+
+.fa-icon {
+    cursor: pointer;
+    padding: 9px;
+    width: 32px;
+    height: 32px;
+    transition: background-color 0.1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 2.4rem;
+    font-size: 1.6rem;
+}
+
+.category-item {
+    height: 50px;
+    overflow: hidden;
+}
+
+.category-item i {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    vertical-align: middle;
+    font-size: 17px;
+}
+
+.category-item span {
+    vertical-align: middle;
+    display: inline-flex;
+    height: 50px;
+    align-items: center;
+    font-family: "Press Start 2P", cursive;
+    font-size: 12px;
+}
+
+#task-panel h1 {
+    text-align: left;
+}
+
+@media only screen and (min-width: 875px) {
+    .weirdMediaQueryProblem {}
     .logo {
         width: 19.5vw;
     }
-
     .newTask {
         width: 30%;
     }
-
     input {
         padding: 10px;
         width: 30%;
     }
-
     ul li ul li:not(:last-of-type) {
         margin-right: 22px;
     }
-
-    
 }
-
-
-
