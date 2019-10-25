@@ -1,6 +1,5 @@
 <template>
-	<div>
-		
+<div>
 		<ul v-if="todos.length">
 			<TodoListItem
 				v-for="todo in todos"
@@ -17,7 +16,7 @@
 <div class="field">
 		<BaseInputText
 			v-model="newTodoText"
-			placeholder="New todo"
+			placeholder="New goal"
 			@keydown.enter="addTodo"
 		/>
 </div>
@@ -34,13 +33,13 @@ export default {
 	components: {
 		BaseInputText, TodoListItem
 	},
-  data () {
-    return {
-		user_id: '1',
-		newTodoText: '',
-		todos: []
-    }
-  },
+	data () {
+    	return {
+			user_id: '1',
+			newTodoText: '',
+			todos: []
+    	}
+  	},
 	methods: {
 			async addTodo () {
 				// Clientside
@@ -70,7 +69,8 @@ export default {
 									id: 5,
 									status: 'incomplete'
 								}
-							]
+							],
+						category: this.$route.params.category
 					}
 					this.todos.push({
 						text: trimmedText,
@@ -96,7 +96,8 @@ export default {
 									id: 5,
 									status: 'incomplete'
 								}
-							]
+							],
+						category: this.$route.params.category
 					})
 
 					// Database
@@ -127,7 +128,8 @@ export default {
 									id: 5,
 									status: 'incomplete'
 								}
-							]					
+							],
+						category: "health"				
 					})
 
 					// Reset
@@ -139,7 +141,7 @@ export default {
 				let removeable = this.todos.indexOf(todo)
 				this.todos.splice(removeable, 1)
 
-				// Databse Remove
+				//  Databse Remove
 				await db.collection('todo').doc(todo.id).delete()
 			},
 			async editTodo (todo) {
@@ -147,15 +149,40 @@ export default {
 				await db.collection('todo').doc(todo.id).set({
 					text: todo.text
 				})
+			},
+			getUrl() {
+    			console.log(this.$route.params.category)
+			},
+			retrieveTasks() {
+				if(this.$route.name == 'category') {
+					this.todos.splice(0, this.todos.length)
+					let route = this.$route.params.category 
+
+					db.collection("todo").where('category', '==', route).get().then((querySnapshot) => {
+						querySnapshot.forEach(doc => this.todos.push({
+							id:doc.id,
+							...doc.data()
+						}))
+					})
+				}
+				else {
+					db.collection("todo").get().then((querySnapshot) => {
+						querySnapshot.forEach(doc => this.todos.push({
+							id:doc.id,
+							...doc.data()
+						}))
+					})	
+				}
 			}
 		},
 		created() {	
-				db.collection("todo").get().then((querySnapshot) => {
-					querySnapshot.forEach(doc => this.todos.push({
-						id:doc.id,
-						...doc.data()
-					}))
-				})
-			}
+		},
+  	mounted() {
+		this.retrieveTasks()
+  	},
+	watch: {
+		// call again the method if the route changes
+		'$route': 'retrieveTasks'
+	}
 }
 </script>

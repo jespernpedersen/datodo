@@ -4,21 +4,16 @@
     <!-- View before editing -->
     <div v-show="!isEditing">
       <span ><h3>{{ todo.text }}</h3></span>
+      <h4>{{ todo.category }}</h4>
     </div>
     <!-- View in editing -->
     <div class="button newTask" v-show="isEditing">
       <input class="inputfield" v-model="todo.text">
     </div>
     <!-- Action buttons -->
-    <button class="button remove" @click="$emit('remove', todo)">
-      X
-    </button>
-    <button class="button edit" v-on:click="showForm" v-show="!isEditing">
-      Edit
-    </button>
-    <button class="button complete" @click="$emit('editcomplete', todo)" v-on:click="hideForm" v-show="isEditing">
-      Complete
-    </button>
+    <button class="button remove" @click="$emit('remove', todo)">X</button>
+    <button class="button edit" v-on:click="showForm" v-show="!isEditing">Edit</button>
+    <button class="button complete" @click="$emit('editcomplete', todo)" v-on:click="hideForm" v-show="isEditing">Complete</button>
     <ul>
       <SubtaskItem
 				v-for="subtask in todo.tasks"
