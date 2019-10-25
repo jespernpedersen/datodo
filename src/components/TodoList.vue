@@ -70,7 +70,7 @@ export default {
 									status: 'incomplete'
 								}
 							],
-						category: this.$route.name
+						category: this.$route.params.category
 					}
 					this.todos.push({
 						text: trimmedText,
@@ -97,7 +97,7 @@ export default {
 									status: 'incomplete'
 								}
 							],
-						category: this.$route.name
+						category: this.$route.params.category
 					})
 
 					// Database
